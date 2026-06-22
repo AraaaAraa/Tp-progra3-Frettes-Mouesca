@@ -1,0 +1,185 @@
+/* 
+1-Cuando este aplicado uno de los filtros, aparezca en grande el tipo de juego en lugar de "Todos los juegos" 
+2-Que cuando se pase el cursor por arriba cambie de color las letras y el elemento del fitro suba un poco
+3-Que la parte que diga "Todos nuestros juegos" suba y al apretarse aparezcan todos los juegos
+4-Que el filtro seleccionado cambie de color
+*/
+
+body{
+    margin: 0;
+    display: block;
+    overflow-y: scroll;
+}
+
+    /* =============================================
+    Barra de busqueda
+    ============================================= */
+
+
+.barra-superior{
+    display: flex;
+    justify-content: center;
+    background-color: rgba(75, 46, 80, 0.247);
+    width: 100%;
+    top: 0;
+    box-shadow: 5px 5px 5px rgba(39, 15, 24, 0.068);
+    margin: 0;
+    z-index: 100;
+}
+
+#btn-cartas , #btn-tableros{
+    background-color: #23197c00;
+    border: none;
+    color: #2b1e41c0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+
+.sub-barra-busqueda{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+}
+
+.elemento-filtro{
+    font-size: 30px;
+}
+
+.titulo-productos{
+    margin-top: 0px;
+}
+
+    /* =============================================
+    Bloque principal de elementos
+    ============================================= */
+
+.productos-general{
+    margin: 0px;
+    width: 100%;
+
+    
+}
+
+/* barra de busqueda */
+.contenedor-busqueda{
+    display: flex;
+    justify-content: center; /* centra el input horizontalmente */
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    padding-top: 0px;
+}
+.barra-busqueda-elementos{
+    background: linear-gradient(to right, #2c1552b6, #d47ed038);
+    border: none; /* Elimina el borde */
+    box-shadow: 5px 5px 5px rgba(31, 17, 22, 0.164);
+    outline: none;
+    width: 20%;
+    max-width: 600px;
+    height: 40px;
+    margin: 0;
+    border-radius: 10px;
+    font-size: 120%;
+}
+
+
+    /* =============================================
+    Tarjetas productos
+    ============================================= */
+
+#contenedor-bloques-productos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    gap: 20px;
+    padding: 20px;
+}
+
+.contenedor-producto {
+    background:  linear-gradient(180deg, #7a628a07 0%, #604a79bb 90%);
+    border-radius: 0.75rem;
+    width: 11.25rem;
+    overflow: hidden;           /* importante para que la imagen respete el border-radius */
+    display: flex;
+    flex-direction: column;
+    box-shadow: 5px 5px 5px rgba(39, 15, 24, 0.068);
+    margin: 50px 0 0 40px;  /* Arriba: 10px | Derecha: 20px | Abajo: 30px | Izquierda: 40px */
+}
+
+.contenedor-imagen-producto {
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.imagen-producto {
+    width: 90%;
+    height: 90%;
+    object-fit: cover;          /* la imagen llena el contenedor sin deformarse */
+}
+
+.contenedor-inferior-producto {
+    padding: 5px 0 12px 0; /* Arriba: 10px | Derecha: 20px | Abajo: 30px | Izquierda: 40px */
+    display: flex;
+    flex-direction: row;
+    background-color: #472f6b21;
+    box-shadow: 0px -4px 7px rgba(31, 17, 22, 0.144);
+    gap: 0px;
+    width:100%;
+    justify-content: space-between;
+}
+
+.info-producto {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0;
+    gap: 1px;
+    margin-left: 15px;
+}
+
+.titulo-producto {
+    margin: 0;
+    font-size: 19px;
+    line-height: 1.1;
+    text-shadow: 2px 2px 2px rgba(31, 17, 22, 0.329);
+    font-weight: 600;
+}
+
+.precio {
+    margin: 0;
+    font-size: 15px;
+    text-shadow: 2px 2px 2px rgba(31, 17, 22, 0.267);
+    font-weight:bold;
+    color: #1f1430;
+}
+
+.sumar-producto{
+    display: flex;
+    align-items: center;
+}
+
+.boton-producto {
+    margin-right: 5px;
+    background-color: #07060600;
+    text-shadow: 2px 2px 2px rgba(31, 17, 22, 0.267);
+    color: #23197c;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.boton-producto:hover {
+    color: #1f1430;
+    transform: translateY(-2px);/* sube 2px sin afectar el layout */
+}
