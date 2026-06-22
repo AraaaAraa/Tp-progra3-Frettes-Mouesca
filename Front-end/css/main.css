@@ -1,25 +1,22 @@
-/* General */
+/* =============================================
+VARIABLES Y RESET GENERAL
+============================================= */
+:root {
+    --color-fondo-top:    #e0a6a6;   /* rosa viejo superior */
+    --color-fondo-mid:    #8081b0e5;   /* rosa medio */
+    --color-vino:         #6b2737;   /* acento vino */
+    --color-lol:          #7e4f4fcb;
+    --color-input-bg:     #bca8d4;   /* fondo de inputs */
+    --color-titulo-bg:    #dfa3b242;   /* fondo del recuadro de título */
+    --color-texto:        #3a1a22;   /* texto oscuro */
+    --color-fondo-titulo: #3d1b2836;
+
+}
 
 /* =============================================
-    VARIABLES Y RESET GENERAL
-    ============================================= */
-    :root {
-        --color-fondo-top:    #e0a6a6;   /* rosa viejo superior */
-        --color-fondo-mid:    #8081b0e5;   /* rosa medio */
-        --color-vino:         #6b2737;   /* acento vino */
-        --color-lol:          #7e4f4fcb;
-        --color-input-bg:     #bca8d4;   /* fondo de inputs */
-        --color-titulo-bg:    #dfa3b242;   /* fondo del recuadro de título */
-        --color-texto:        #3a1a22;   /* texto oscuro */
-        --color-fondo-titulo: #3d1b2836;
-
-    }
-
-    /* =============================================
-    PÁGINA COMPLETA
-    Fondo con degradado de tonos rosados
-    ============================================= */
-    body {
+PÁGINA COMPLETA
+============================================= */
+body {
     min-height: 100vh;
     margin: 0;
     background: linear-gradient(180deg, var(--color-fondo-top) 0%, var(--color-fondo-mid) 80%);
@@ -29,76 +26,13 @@
     justify-content: center;
     overflow: hidden;
     position: relative;
-    }
+}
 
 
-
-    /* =============================================
-    TARJETA / FORMULARIO PRINCIPAL
-    ============================================= */
-    .inicio-usuario {
-    position: relative;
-    padding: 0 20px;        /* igual izquierda y derecha */
-    box-sizing: border-box; /* el padding no rompe el ancho */
-    z-index: 10;
-    background: transparent;
-    width: 100%;
-    width: 400px;
-    align-items: stretch;   /* todos los hijos ocupan el mismo ancho */
-    }
-
-    /* =============================================
-    ÍCONO DE CARTAS (parte superior)
-    ============================================= */
-
-    .contenido-contenedor{
-        background-color: rgba(120, 104, 133, 0.253);
-        padding: 24px 24px 28px 24px; /* Arriba: 10px | Derecha: 20px | Abajo: 30px | Izquierda: 40px */
-        border-radius: 10px;
-        box-shadow: 5px 5px 5px rgba(39, 15, 24, 0.11);
-        position: relative;
-        max-width: 500px;
-    }
-
-    /* =============================================
-    TÍTULO "Bienvenidos"
-    Recuadro con borde y líneas laterales
-    ============================================= */
-    .contenedor-titulo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0px;
-    margin-bottom: 24px;
-    }
-
-    /* Recuadro del título */
-    .cubo-texto {
-    background: var(--color-titulo-bg);
-    border: 1.2px solid var(--color-fondo-titulo);
-    border-radius: 6px;
-    padding: 0px 20px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: var(--color-texto);
-    white-space: nowrap;
-    box-shadow: inset 0 2px 5px rgba(80,0,30,0.15);
-    }
-
-    /* =============================================
-    ETIQUETAS DE LOS CAMPOS
-    ============================================= */
-    .form-label {
-    color: var(--color-texto);
-    font-size: 0.85rem;
-    margin-bottom: 4px;
-    font-weight: 600;
-    }
-
-    /* =============================================
-    CAMPOS DE TEXTO (inputs)
-    ============================================= */
-    .furmulario-cubo {
+/* =============================================
+CAMPOS DE TEXTO (inputs)
+============================================= */
+.furmulario-cubo {
     width: 100%;
     background: var(--color-input-bg);
     border: none;
@@ -112,74 +46,29 @@
     transition: box-shadow 0.2s;
     }
 
-    .campo-busqueda{
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .cubo-texto p {
-        margin: 4px -4px;
-    }
-
-    /* Estado focus del input */
-    .furmulario-cubo:focus {
-    box-shadow: inset 0 2px 5px rgba(80,0,30,0.25), 0 0 0 2px var(--color-vino);
-    }
-
-    /* =============================================
-    BOTÓN DE INGRESAR
-    ============================================= */
-    .btn-ingresar {
-    display: block;
+.campo-ingreso{
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    margin-left: 12px;
-    margin-top: 24px;
-    padding: 10px;
-    background: var(--color-lol);
-    color: #f0e0e0;
-    border: none;
-    border-radius: 6px;
-    font-size: 1rem;
-    font-weight: bold;
-    letter-spacing: 0.05em;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.1s;
-    box-shadow: 0 2px 5px rgba(80,0,30,0.4);
-    }
-
-    .btn-ingresar:hover {
-    background: var(--color-vino);
-    transform: translateY(-1px);
-    }
-
-    .btn-ingresar:active {
-    transform: translateY(0);
-    }
-
-
-    /* =============================================
-    Letras y palabras
-    ============================================= */
-    .principal-titulo{
-        font-size: 30px;
-    }
-
-    .sub-titulos{
-        font-size: 20px;
-        margin-top: 10px;
-        display: block;
-    }
-
-    .kreon{
-        font-family: "Kreon", serif;
-        font-optical-sizing: auto;
-        font-weight: 400; /* Cambiado de 40px a 400 */
-        font-style: normal;
 }
 
-    .arbutus-regular {
-        font-family: "Arbutus", serif;
-        font-weight: 400;
-        font-style: normal;
+.furmulario-cubo:focus {
+    box-shadow: inset 0 2px 5px rgba(80,0,30,0.25), 0 0 0 2px var(--color-vino);
+}
+
+/* =============================================
+Tipografias
+============================================= */
+
+.kreon{
+    font-family: "Kreon", serif;
+    font-optical-sizing: auto;
+    font-weight: 400; 
+    font-style: normal;
+}
+
+.arbutus-regular {
+    font-family: "Arbutus", serif;
+    font-weight: 400;
+    font-style: normal;
 }
