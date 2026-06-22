@@ -1,0 +1,102 @@
+/* =============================================
+VARIABLES Y RESET GENERAL
+============================================= */
+:root {
+    --color-fondo-top:    #e0a6a6;   /* rosa viejo superior */
+    --color-fondo-mid:    #8081b0e5;   /* rosa medio */
+    --color-vino:         #6b2737;   /* acento vino */
+    --color-lol:          #7e4f4fcb;
+    --color-input-bg:     #bca8d4;   /* fondo de inputs */
+    --color-titulo-bg:    #dfa3b242;   /* fondo del recuadro de título */
+    --color-texto:        #3a1a22;   /* texto oscuro */
+    --color-fondo-titulo: #3d1b2836;
+
+}
+
+/* =============================================
+TARJETA / FORMULARIO PRINCIPAL
+============================================= */
+.inicio-usuario {
+    position: relative;
+    padding: 0 20px;    
+    box-sizing: border-box; /* el padding no rompe el ancho */
+    z-index: 10;
+    background: transparent;
+    width: 100%;
+    width: 400px;
+    align-items: stretch;   /* todos los hijos ocupan el mismo ancho */
+}
+
+
+.contenido-contenedor{
+    background-color: rgba(120, 104, 133, 0.253);
+    padding: 24px 24px 28px 24px; /* Arriba: 10px | Derecha: 20px | Abajo: 30px | Izquierda: 40px */
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(39, 15, 24, 0.11);
+    position: relative;
+    max-width: 500px;
+}
+
+/* =============================================
+TÍTULO "Bienvenidos" e innput
+============================================= */
+.contenedor-titulo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0px;
+    margin-bottom: 24px;
+}
+
+.cubo-texto {
+    background: var(--color-titulo-bg);
+    border: 1.2px solid var(--color-fondo-titulo);
+    border-radius: 6px;
+    padding: 0px 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--color-texto);
+    white-space: nowrap;
+    box-shadow: inset 0 2px 5px rgba(80,0,30,0.15);
+}
+
+.principal-titulo{
+    font-size: 30px;
+    margin: 4px 0px;
+}
+
+.sub-titulos{
+    font-size: 20px;
+    margin-top: 10px;
+    display: block;
+}
+
+/* =============================================
+BOTÓN DE INGRESAR
+============================================= */
+.btn-ingresar {
+    display: block;
+    width: 100%;
+    margin-left: 12px;
+    margin-top: 24px;
+    padding: 10px;
+    background: var(--color-lol);
+    color: #f0e0e0;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    box-shadow: 0 2px 5px rgba(80,0,30,0.4);
+}
+
+.btn-ingresar:hover {
+    background: var(--color-vino);
+    transform: translateY(-1px);
+}
+
+.btn-ingresar:active {
+    transform: translateY(0);
+}
