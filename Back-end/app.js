@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
-const db = require("./database/db");
+
+const productosRoutes = require("./routes/productosRoutes");
+const usuariosRoutes = require("./routes/usuariosRoutes");
 
 const app = express();
 const PORT = 3000;
@@ -14,18 +16,9 @@ app.get("/", (req, res) => {
     res.send("Backend funcionando");
 });
 
-// Ruta productos
-app.get("/productos", async (req, res) => {
-    try {
-        const [rows] = await db.query("SELECT * FROM productos");
-        res.json(rows);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({
-            mensaje: "Error al consultar la base de datos"
-        });
-    }
-});
+// Rutas
+app.use("/productos", productosRoutes);
+app.use("/usuarios", usuariosRoutes);
 
 // Levantar servidor
 app.listen(PORT, () => {
