@@ -1,4 +1,4 @@
-const Usuario = require("../models/usuario");
+import * as Usuario from "../models/usuario.js";
 
 const obtenerUsuarios = async (req, res) => {
     try {
@@ -17,6 +17,6 @@ const obtenerUsuarios = async (req, res) => {
     }
 };
 
-module.exports = {
+export {
     obtenerUsuarios
 };

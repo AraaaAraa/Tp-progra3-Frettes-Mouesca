@@ -1,4 +1,4 @@
-const db = require("../database/db");
+import db from "../database/db.js";
 
 const obtenerTodos = async () => {
     const [rows] = await db.query(
@@ -8,6 +8,6 @@ const obtenerTodos = async () => {
     return rows;
 };
 
-module.exports = {
+export {
     obtenerTodos
 };

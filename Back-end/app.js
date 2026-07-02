@@ -1,8 +1,8 @@
-const express = require("express");
-const cors = require("cors");
+import express from "express";
+import cors from "cors";
 
-const productosRoutes = require("./routes/productosRoutes");
-const usuariosRoutes = require("./routes/usuariosRoutes");
+import productosRoutes from "./routes/productosRoutes.js";
+import usuariosRoutes from "./routes/usuariosRoutes.js";
 
 const app = express();
 const PORT = 3000;
