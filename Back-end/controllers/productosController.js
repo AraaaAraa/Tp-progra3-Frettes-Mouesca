@@ -39,7 +39,56 @@ const crearProducto = async (req, res) => {
     }
 };
 
+const actualizarProducto = async (req, res) => {
+    try {
+
+        const { id } = req.params;
+
+        const productoActualizado = req.body;
+
+        const resultado = await Producto.actualizar(id, productoActualizado);
+
+        res.json({
+            mensaje: "Producto actualizado correctamente",
+            filasAfectadas: resultado.affectedRows
+        });
+
+        
+    } catch (error) {
+
+        console.error(error);
+
+        res.status(500).json({
+            mensaje: "Error al actualizar el producto"
+        });
+    }
+};
+
+const eliminarProducto = async (req, res) => {
+    try {
+
+        const { id } = req.params;
+
+        const resultado = await Producto.eliminar(id);
+
+        res.json({
+            mensaje: "Producto eliminado correctamente",
+            filasAfectadas: resultado.affectedRows
+        });
+
+    } catch (error) {
+
+        console.error(error);
+
+        res.status(500).json({
+            mensaje: "Error al eliminar el producto"
+        });
+    }
+};
+
 export {
     obtenerProductos,
-    crearProducto
+    crearProducto,
+    actualizarProducto,
+    eliminarProducto
 };

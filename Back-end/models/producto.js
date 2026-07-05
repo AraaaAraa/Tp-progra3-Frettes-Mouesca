@@ -28,7 +28,47 @@ const crear = async (nuevoProducto) => {
     return resultado;
 };
 
+const actualizar = async (id, productoActualizado) => {
+
+    const [resultado] = await db.query(
+        `UPDATE productos
+        SET
+            producto = ?,
+            descripcion = ?,
+            precio = ?,
+            imagen = ?,
+            tipo = ?,
+            stock = ?
+        WHERE id = ?`,
+        [
+            productoActualizado.producto,
+            productoActualizado.descripcion,
+            productoActualizado.precio,
+            productoActualizado.imagen,
+            productoActualizado.tipo,
+            productoActualizado.stock,
+            id
+        ]
+    );
+
+    return resultado;
+};
+
+const eliminar = async (id) => {
+
+    const [resultado] = await db.query(
+        `UPDATE productos
+        SET activo = 0
+        WHERE id = ?`,
+        [id]
+    );
+
+    return resultado;
+};
+
 export {
     obtenerTodos,
-    crear
+    crear,
+    actualizar,
+    eliminar
 };
