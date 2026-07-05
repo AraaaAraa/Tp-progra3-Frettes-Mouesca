@@ -1,0 +1,118 @@
+body{
+    margin: 0;
+    display: block;
+    overflow-y: auto;
+}
+
+.carrito-wrapper{
+    width: min(1000px, 92%);
+    margin: 30px auto;
+    background: rgba(120, 104, 133, 0.20);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 5px 5px 5px rgba(39, 15, 24, 0.11);
+}
+
+.barra-superior-carrito{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.barra-superior-carrito h1{
+    margin: 0;
+    color: var(--color-texto);
+}
+
+.volver{
+    text-decoration: none;
+    color: var(--color-vino);
+    font-weight: 600;
+}
+
+.resumen-carrito{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+.lista-carrito{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.item-carrito{
+    background: linear-gradient(180deg, #7a628a07 0%, #604a79bb 90%);
+    border-radius: 10px;
+    padding: 12px;
+    display: grid;
+    grid-template-columns: 1.3fr 0.8fr 0.8fr 0.6fr;
+    align-items: center;
+    box-shadow: 5px 5px 5px rgba(39, 15, 24, 0.068);
+}
+
+.nombre-item{
+    font-size: 1.1rem;
+    color: #1f1430;
+}
+
+.cantidad-box{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.btn-cant, .btn-eliminar, .btn-secundario{
+    border: none;
+    border-radius: 6px;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+
+.btn-cant{
+    background: var(--color-input-bg);
+    color: var(--color-texto);
+}
+
+.btn-eliminar{
+    background: #6b2737;
+    color: #f0e0e0;
+}
+
+.panel-total{
+    background: rgba(223, 163, 178, 0.18);
+    border: 1px solid var(--color-fondo-titulo);
+    border-radius: 10px;
+    padding: 14px;
+    height: fit-content;
+}
+
+.total-final{
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.btn-secundario{
+    width: 100%;
+    margin-top: 10px;
+    background: #2b1e41c0;
+    color: #fff;
+}
+
+.carrito-vacio{
+    font-size: 1.1rem;
+    color: #2b1e41c0;
+}
+
+@media (max-width: 800px){
+    .resumen-carrito{
+        grid-template-columns: 1fr;
+    }
+
+    .item-carrito{
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+}
