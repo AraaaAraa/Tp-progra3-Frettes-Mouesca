@@ -11,20 +11,18 @@ body{
     overflow-y: scroll;
 }
 
-    /* =============================================
-    Barra de busqueda
-    ============================================= */
+/* =============================================
+Barra de navegación (Alineación Perfecta)
+============================================= */
 
-
-.barra-superior{
-    display: flex;
-    justify-content: center;
+.barra-superior {
     background-color: rgba(75, 46, 80, 0.247);
     width: 100%;
     top: 0;
     box-shadow: 5px 5px 5px rgba(39, 15, 24, 0.068);
     margin: 0;
     z-index: 100;
+    padding: 15px 0;
 }
 
 #btn-cartas , #btn-tableros{
@@ -33,30 +31,59 @@ body{
     color: #2b1e41c0;
     margin-bottom: 0;
     padding-bottom: 0;
-}
-
-
-.sub-barra-busqueda{
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    margin-bottom: 0;
-    padding-bottom: 0;
+    font-size: 25px;
 }
 
 nav {
     display: flex;
-    flex-direction: column;
+    flex-direction: column;   /* Mantiene tu diseño original: botones arriba, título abajo */
+    align-items: center;      /* Centra los botones y el título en el medio de la pantalla */
+    justify-content: center;
+    width: 95%;               
+    margin: 0 auto;           
+    position: relative;       /* Permite a los extremos ubicarse respecto a la barra */
+}
+
+/* El logo se posiciona a la izquierda sin molestar al centro */
+.logo {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%); /* Centrado vertical perfecto */
+}
+
+/* El carrito se posiciona a la derecha sin molestar al centro */
+.contendor-carrito {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%); /* Centrado vertical perfecto */
+}
+
+/* Forzamos que las imágenes no se estiren */
+.im-barra {
+    object-fit: contain;
+}
+
+.imagen-logo{
+    width: 70px;
+    height: 70px;
+}
+
+.imagen-carrito{
+    width: 90px;
+    height: 90px;
+}
+/* Tu diseño original para el centro queda intacto */
+.sub-barra-busqueda {
+    display: flex;
     align-items: center;
-    gap: 1px;
+    gap: 30px;
+    margin-bottom: 5px; /* Espacio antes del título */
 }
 
-.elemento-filtro{
-    font-size: 30px;
-}
-
-.titulo-productos{
-    margin-top: 0px;
+.titulo-productos {
+    margin: 0;
 }
 
     /* =============================================

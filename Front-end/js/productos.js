@@ -23,41 +23,60 @@ const productos = [
 // Helper para hacer el JOIN (simula un SELECT con JOIN)
 const getProductosConTipo = () =>
     productos.map(p => ({
-    ...p,
-    nombre_type: tipos.find(t => t.id_type === p.id_type)?.nombre_type,
+        ...p,
+        nombre_type: tipos.find(t => t.id_type === p.id_type)?.nombre_type,
     }));
 
+const KEY_CARRITO = "carrito";
 
+function leerCarrito() {
+    return JSON.parse(localStorage.getItem(KEY_CARRITO)) || [];
+}
 
+function guardarCarrito(carrito) {
+    localStorage.setItem(KEY_CARRITO, JSON.stringify(carrito));
+}
 
+function agregarAlCarrito(idProducto) {
+    const producto = productos.find(p => p.id === idProducto);
+    if (!producto) return;
 
+    const carrito = leerCarrito();
+    const existente = carrito.find(item => item.id === producto.id);
 
+    if (existente) {
+        existente.cantidad += 1;
+    } else {
+        carrito.push({
+            id: producto.id,
+            nombre: producto.nombre,
+            precio: producto.precio,
+            ruta_img: producto.ruta_img,
+            cantidad: 1
+        });
+    }
 
-/*<div class="contenedor-producto">
-                <div class="imagen-producto"></div>
-                <div class="contenedor-inferior-producto">
-                    <div class="info-producto"></div>
-                    <div class="sumar-producto"></div>
-                </div>
-            </div>*/
-
+    guardarCarrito(carrito);
+    // opcional:
+    // alert(`Agregaste "${producto.nombre}" al carrito`);
+}
 
 function mostrarProductos(array) {
     let cartaProducto = "";
     array.forEach((producto) => {
         cartaProducto += `
             <div class="contenedor-producto">
-                <div class="imagen-producto">
+                <div class="contenedor-imagen-producto">
                     <img src="${producto.ruta_img}" alt="${producto.nombre}" class="imagen-producto">
                 </div>
 
                 <div class="contenedor-inferior-producto">
                     <div class="info-producto">
-                        <p class="titulo-producto">${producto.nombre}</p>
-                        <p class="precio">$ ${producto.precio}</p>
+                        <p class="titulo-producto kreon">${producto.nombre}</p>
+                        <p class="precio kreon">$ ${producto.precio.toLocaleString("es-AR")}</p>
                     </div>
                     <div class="sumar-producto">
-                        <button class="boton-producto" type="submit" name="${producto.id}">
+                        <button class="boton-producto" type="button" data-id="${producto.id}">
                             +
                         </button>
                     </div>
@@ -71,7 +90,6 @@ let filtroActivo = null;
 
 function filtrarPorTipo(idTipo) {
     if (filtroActivo === idTipo) {
-        // Si ya está activo ese filtro, lo desactiva y muestra todos
         filtroActivo = null;
         mostrarProductos(productos);
     } else {
@@ -83,5 +101,14 @@ function filtrarPorTipo(idTipo) {
 
 document.querySelector("#btn-cartas").addEventListener("click", () => filtrarPorTipo(2));
 document.querySelector("#btn-tableros").addEventListener("click", () => filtrarPorTipo(1));
+
+// Delegación de eventos para botones "+"
+document.querySelector("#contenedor-bloques-productos").addEventListener("click", (e) => {
+    const btn = e.target.closest(".boton-producto");
+    if (!btn) return;
+
+    const idProducto = Number(btn.dataset.id);
+    agregarAlCarrito(idProducto);
+});
 
 mostrarProductos(productos);
