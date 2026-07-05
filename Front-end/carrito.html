@@ -1,12 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Carrito</title>
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/carrito.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arbutus&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kreon:wght@300..700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="barra-superior-carrito"></div>
-    <div class="resumen-carrito"></div>
+    <div class="carrito-wrapper">
+    <header class="barra-superior-carrito">
+        <h1 class="arbutus-regular">Tu carrito</h1>
+        <a href="productos.html" class="volver kreon">← Seguir comprando</a>
+    </header>
+
+    <main class="resumen-carrito">
+        <div id="lista-carrito" class="lista-carrito"></div>
+
+        <section class="panel-total">
+        <p class="kreon">Subtotal: <span id="subtotal">$0</span></p>
+        <p class="kreon">Envío: <span id="envio">$0</span></p>
+        <hr>
+        <p class="kreon total-final">Total: <span id="total">$0</span></p>
+        <button id="btn-finalizar" class="btn-ingresar">Finalizar compra</button>
+        <button id="btn-vaciar" class="btn-secundario kreon">Vaciar carrito</button>
+        </section>
+    </main>
+    </div>
+
+    <script src="js/carrito.js"></script>
 </body>
 </html>
