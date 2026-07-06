@@ -5,6 +5,7 @@ import { fileURLToPath } from "url";
 
 import productosRoutes from "./routes/productosRoutes.js";
 import usuariosRoutes from "./routes/usuariosRoutes.js";
+import dashboardRoutes from "./routes/dashboardRoutes.js";
 
 const app = express();
     
@@ -23,14 +24,15 @@ app.use(express.json());
 app.use("/css", express.static(path.join(__dirname, "views/css")));
 app.use("/js", express.static(path.join(__dirname, "views/js")));
 
-// Ruta de prueba
+// Ruta de dashboard
 app.get("/", (req, res) => {
-    res.render("crear");
+    res.redirect("/dashboard/crear");
 });
 
 // Rutas
 app.use("/productos", productosRoutes);
 app.use("/usuarios", usuariosRoutes);
+app.use("/dashboard", dashboardRoutes);
 
 // Levantar servidor
 app.listen(PORT, () => {
