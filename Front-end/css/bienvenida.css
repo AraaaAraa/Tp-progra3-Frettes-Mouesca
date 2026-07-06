@@ -100,3 +100,40 @@ BOTÓN DE INGRESAR
 .btn-ingresar:active {
     transform: translateY(0);
 }
+
+
+.tabs-auth{
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 14px;
+}
+
+.tab-auth{
+    border: 1px solid var(--color-fondo-titulo);
+    background: var(--color-titulo-bg);
+    color: var(--color-texto);
+    border-radius: 6px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.tab-auth:hover{
+    transform: translateY(-1px);
+}
+
+.tab-activa{
+    background: var(--color-lol);
+    color: #f0e0e0;
+}
+
+.oculto{
+    display: none;
+}
+
+.msg-auth{
+    min-height: 20px;
+    margin: 10px 0 0 12px;
+    color: #6b2737;
+}
