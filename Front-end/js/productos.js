@@ -62,6 +62,13 @@ function agregarAlCarrito(idProducto) {
 }
 
 function mostrarProductos(array) {
+    const contenedor = document.querySelector("#contenedor-bloques-productos");
+
+    if (array.length === 0) {
+        contenedor.innerHTML = `<p class="sin-resultados kreon">No encontramos lo que buscás :(</p>`;
+        return;
+    }
+
     let cartaProducto = "";
     array.forEach((producto) => {
         cartaProducto += `
@@ -83,24 +90,71 @@ function mostrarProductos(array) {
                 </div>
             </div>`;
     });
-    document.querySelector("#contenedor-bloques-productos").innerHTML = cartaProducto;
+    contenedor.innerHTML = cartaProducto;
 }
 
-let filtroActivo = null;
+const btnTableros = document.getElementById("btn-tableros");
+const btnCartas = document.getElementById("btn-cartas");
+const inputBusqueda = document.getElementById("barra-busqueda");
+const tituloReset = document.getElementById("titulo-reset");
 
-function filtrarPorTipo(idTipo) {
+let filtroActivo = null;   // 1 = tableros, 2 = cartas, null = sin filtro
+let textoBusqueda = "";    // lo que hay escrito en la barra de búsqueda
+
+// Aplica el filtro de tipo Y la búsqueda de texto juntos
+function obtenerProductosFiltrados() {
+    let resultado = productos;
+
+    if (filtroActivo !== null) {
+        resultado = resultado.filter(p => p.id_type === filtroActivo);
+    }
+
+    if (textoBusqueda !== "") {
+        resultado = resultado.filter(p =>
+            p.nombre.toLowerCase().includes(textoBusqueda)
+        );
+    }
+
+    return resultado;
+}
+
+function filtrarPorTipo(idTipo, botonActivo, botonInactivo) {
     if (filtroActivo === idTipo) {
+        // Se vuelve a apretar el mismo filtro: se desactiva y vuelve a "Todos"
         filtroActivo = null;
-        mostrarProductos(productos);
+        botonActivo.classList.remove("filtro-activo");
+        tituloReset.classList.add("filtro-activo");
     } else {
         filtroActivo = idTipo;
-        const filtrados = productos.filter(p => p.id_type === idTipo);
-        mostrarProductos(filtrados);
+        botonActivo.classList.add("filtro-activo");
+        botonInactivo.classList.remove("filtro-activo");
+        tituloReset.classList.remove("filtro-activo");
     }
+    mostrarProductos(obtenerProductosFiltrados());
 }
 
-document.querySelector("#btn-cartas").addEventListener("click", () => filtrarPorTipo(2));
-document.querySelector("#btn-tableros").addEventListener("click", () => filtrarPorTipo(1));
+btnTableros.addEventListener("click", () => filtrarPorTipo(1, btnTableros, btnCartas));
+btnCartas.addEventListener("click", () => filtrarPorTipo(2, btnCartas, btnTableros));
+
+// Búsqueda por texto (se combina con el filtro de tipo que esté activo)
+inputBusqueda.addEventListener("input", () => {
+    textoBusqueda = inputBusqueda.value.trim().toLowerCase();
+    mostrarProductos(obtenerProductosFiltrados());
+});
+
+// Al hacer click en "Todos nuestros juegos" se resetea todo: filtro, búsqueda e input
+tituloReset.addEventListener("click", () => {
+    filtroActivo = null;
+    textoBusqueda = "";
+    inputBusqueda.value = "";
+    btnTableros.classList.remove("filtro-activo");
+    btnCartas.classList.remove("filtro-activo");
+    tituloReset.classList.add("filtro-activo");
+    mostrarProductos(productos);
+});
+
+// Estado inicial: "Todos nuestros juegos" arranca marcado como activo
+tituloReset.classList.add("filtro-activo");
 
 // Delegación de eventos para botones "+"
 document.querySelector("#contenedor-bloques-productos").addEventListener("click", (e) => {
