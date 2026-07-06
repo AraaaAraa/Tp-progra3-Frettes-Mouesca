@@ -13,7 +13,7 @@ formulario.addEventListener("submit", async (event) => {
 
     try {
         // Conectamos con el controlador de productos que ya tienen en routes/productosRoutes.js
-        const response = await fetch("http://localhost:3000/../routes/productosRoutes.js", {
+        const response = await fetch("http://localhost:3000/productos", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(nuevoProducto)
