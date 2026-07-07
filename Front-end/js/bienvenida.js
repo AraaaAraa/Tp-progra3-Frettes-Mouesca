@@ -17,6 +17,7 @@
     function setModo(nuevoModo){
     modo = nuevoModo;
     errorEl.textContent = "";
+    errorEl.style.color = "#6b2737";
     inputPass.value = "";
 
     if(modo === "login"){
@@ -62,8 +63,14 @@
         }
 
         localStorage.setItem("usuarioLogueado", JSON.stringify(data.usuario));
-        window.location.href = "productos.html";
-        return;
+
+        if (data.usuario.es_admin === 1) {
+            window.location.href = "http://localhost:3000/dashboard";
+        } else {
+            window.location.href = "productos.html";
+        }
+
+    return;
     }
 
     // registro

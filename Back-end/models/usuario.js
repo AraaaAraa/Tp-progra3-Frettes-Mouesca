@@ -8,6 +8,17 @@ const obtenerTodos = async () => {
     return rows;
 };
 
+const obtenerPorEmail = async (email) => {
+
+    const [rows] = await db.query(
+        `SELECT * FROM usuarios
+        WHERE email = ?`,
+        [email]
+    );
+
+    return rows[0];
+};
+
 const crear = async (nuevoUsuario) => {
 
     const [resultado] = await db.query(
@@ -60,6 +71,7 @@ const eliminar = async (id) => {
 
 export {
     obtenerTodos,
+    obtenerPorEmail,
     crear,
     actualizar,
     eliminar

@@ -39,6 +39,48 @@ const crearUsuario = async (req, res) => {
     }
 };
 
+const loginUsuario = async (req, res) => {
+    try {
+
+        const { email, password } = req.body;
+
+        if (!email || !password) {
+            return res.status(400).json({
+                mensaje: "Email y contraseña son obligatorios"
+            });
+        }
+
+        const usuario = await Usuario.obtenerPorEmail(email);
+
+        if (!usuario) {
+            return res.status(404).json({
+                mensaje: "Usuario no encontrado"
+            });
+        }
+
+        if (usuario.password !== password) {
+            return res.status(401).json({
+                mensaje: "Contraseña incorrecta"
+            });
+        }
+
+        const { password: _, ...usuarioSinPassword } = usuario;
+
+        res.json({
+            mensaje: "Login exitoso",
+            usuario: usuarioSinPassword
+        });
+
+    } catch (error) {
+
+        console.error(error);
+
+        res.status(500).json({
+            mensaje: "Error al iniciar sesión"
+        });
+    }
+};
+
 const actualizarUsuario = async (req, res) => {
     try {
 
@@ -88,6 +130,7 @@ const eliminarUsuario = async (req, res) => {
 export {
     obtenerUsuarios,
     crearUsuario,
+    loginUsuario,
     actualizarUsuario,
     eliminarUsuario
 };
