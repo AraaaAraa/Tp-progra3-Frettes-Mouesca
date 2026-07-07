@@ -66,9 +66,20 @@ const eliminar = async (id) => {
     return resultado;
 };
 
+const obtenerPorId = async (id) => {
+
+    const [rows] = await db.query(
+        "SELECT * FROM productos WHERE id = ?",
+        [id]
+    );
+
+    return rows[0];
+};
+
 export {
     obtenerTodos,
     crear,
     actualizar,
-    eliminar
+    eliminar,
+    obtenerPorId
 };

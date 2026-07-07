@@ -1,0 +1,46 @@
+<%- include("reutilizables/head.ejs") %>
+<%- include("reutilizables/nav.ejs") %>
+
+<main>
+    <h2>Listado de Productos</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Producto</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Tipo</th>
+                <th>Stock</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% productos.forEach(producto => { %>
+                <tr>
+                    <td><%= producto.id %></td>
+                    <td><%= producto.producto %></td>
+                    <td><%= producto.descripcion %></td>
+                    <td>$ <%= producto.precio %></td>
+                    <td><%= producto.tipo %></td>
+                    <td><%= producto.stock %></td>
+                    <td>
+                        <button>Editar</button>
+                        <button
+                        class="btn-eliminar"
+                        data-id="<%= producto.id %>">
+                        Eliminar
+                        </button>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</main>
+
+<script src="/js/dashboard.js"></script>
+
+</body>
+</html>
