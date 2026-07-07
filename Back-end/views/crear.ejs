@@ -3,24 +3,57 @@
 
 <main>
     <h2>Agregar Nuevo Juego / Producto</h2>
-    <form id="form-crear-producto">
+    <form 
+        id="form-crear-producto"
+        data-id="<%= producto ? producto.id : '' %>">
+
         <label for="producto">Nombre del producto:</label>
-        <input type="text" id="producto" name="producto" required>
+        <input 
+            type="text" 
+            id="producto" 
+            name="producto" 
+            value="<%= producto ? producto.producto : '' %>" 
+            required>
 
         <label for="precio">Precio ($):</label>
-        <input type="number" id="precio" name="precio" required>
+        <input 
+            type="number" 
+            id="precio" 
+            name="precio" 
+            value="<%= producto ? producto.precio : '' %>" 
+            required>
 
         <label for="imagen">URL de la Imagen:</label>
-        <input type="text" id="imagen" name="imagen" required>
+        <input 
+            type="text" 
+            id="imagen" 
+            name="imagen" 
+            value="<%= producto ? producto.imagen : '' %>" 
+            required>
 
         <label for="tipo">Tipo:</label>
-        <input type="text" id="tipo" name="tipo" required>
+        <input 
+            type="text" 
+            id="tipo" 
+            name="tipo" 
+            value="<%= producto ? producto.tipo : '' %>" 
+            required>
 
         <label for="descripcion">Descripción:</label>
-        <input type="text" id="descripcion" name="descripcion" required>
+        <input 
+            type="text" 
+            id="descripcion" 
+            name="descripcion" 
+            value="<%= producto ? producto.descripcion : '' %>" 
+            required>
 
         <label for="stock">Stock:</label>
-        <input type="number" id="stock" name="stock" required>
+        <input 
+            type="number" 
+            id="stock" 
+            name="stock" 
+            value="<%= producto ? producto.stock : '' %>" 
+            required>
 
         <button type="submit">Guardar en Base de Datos</button>
     </form>

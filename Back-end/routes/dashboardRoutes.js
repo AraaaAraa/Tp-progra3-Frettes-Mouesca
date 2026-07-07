@@ -37,7 +37,9 @@ router.get("/editar/:id", async (req, res) => {
 });
 
 router.get("/crear", (req, res) => {
-    res.render("crear");
+    res.render("crear", {
+        producto: null
+    });
 });
 
 export default router;
