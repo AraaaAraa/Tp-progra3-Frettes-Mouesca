@@ -6,6 +6,7 @@ import { fileURLToPath } from "url";
 import productosRoutes from "./routes/productosRoutes.js";
 import usuariosRoutes from "./routes/usuariosRoutes.js";
 import dashboardRoutes from "./routes/dashboardRoutes.js";
+import ventasRoutes from "./routes/ventasRoutes.js";
 
 const app = express();
     
@@ -33,6 +34,7 @@ app.get("/", (req, res) => {
 app.use("/productos", productosRoutes);
 app.use("/usuarios", usuariosRoutes);
 app.use("/dashboard", dashboardRoutes);
+app.use("/ventas", ventasRoutes);
 
 // Levantar servidor
 app.listen(PORT, () => {

@@ -5,6 +5,7 @@ const subtotalEl = document.getElementById("subtotal");
 const envioEl = document.getElementById("envio");
 const totalEl = document.getElementById("total");
 const btnVaciar = document.getElementById("btn-vaciar");
+const btnFinalizar = document.getElementById("btn-finalizar");
 
 function leerCarrito() {
     return JSON.parse(localStorage.getItem(KEY_CARRITO)) || [];
@@ -80,3 +81,60 @@ btnVaciar.addEventListener("click", () => {
 });
 
 render();
+
+btnFinalizar.addEventListener("click", async () => {
+
+    const carrito = leerCarrito();
+
+    if (carrito.length === 0) {
+        alert("El carrito está vacío.");
+        return;
+    }
+
+    const usuario = JSON.parse(localStorage.getItem("usuarioLogueado"));
+
+    if (!usuario) {
+        alert("Debés iniciar sesión.");
+        return;
+    }
+
+    const precioTotal = carrito.reduce(
+        (total, item) => total + item.precio * item.cantidad,
+        0
+    );
+
+    try {
+
+        const response = await fetch("http://localhost:3000/ventas", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nombre_usuario: usuario.nombre,
+                precio_total: precioTotal,
+                productos: carrito
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            alert(data.mensaje);
+            return;
+        }
+
+        alert("Compra realizada correctamente.");
+
+        guardarCarrito([]);
+        render();
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert("Error al registrar la compra.");
+
+    }
+
+});
